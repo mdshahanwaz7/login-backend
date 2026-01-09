@@ -8,11 +8,11 @@ import bodyParser from "express"
 // import { signup } from "./controllers/user.js";
 import userRouter from './routes/user.js'
 // import { config} from 'dotenv'
-
+config();
 const app=express()
 
-app.use(bodyParser.json())
-config({path:'.env'})
+
+
 app.use(cors());
 app.use(express.json());
 
