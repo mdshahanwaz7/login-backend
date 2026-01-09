@@ -5,7 +5,7 @@ import { config } from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors"
 import userRouter from './routes/user.js'
-import { config} from 'dotenv'
+// import { config} from 'dotenv'
 config();
 const app=express()
 
