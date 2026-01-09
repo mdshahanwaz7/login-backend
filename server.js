@@ -1,44 +1,19 @@
-import express  from "express"
-// import dotenv from 'dotenv'
-// import jwt from 'jsonwebtoken'
-import { config } from "dotenv";
+import express from "express";
 import mongoose from "mongoose";
-import cors from "cors"
-import userRouter from './routes/user.js'
-// import { config} from 'dotenv'
-config();
-const app=express()
+import cors from "cors";
+import { config } from "dotenv";
+import userRouter from "./routes/user.js";
 
+config(); 
 
+const app = express();
 
 app.use(cors());
 app.use(express.json());
 
+await mongoose.connect(process.env.MONGO_URL);
 
+app.use("/api/user", userRouter);
 
-try {
-     mongoose.connect(
-      process.env.MONGO_URL,
-      {
-        dbName: "complaint_resolver_system"
-      }
-    );
-
-    console.log("MongoDB connected");
-  } catch (error) {
-    console.error("MongoDB connection failed", error);
-    process.exit(1);
-  }
-
-
-
-
-  
-
-app.use('/api/user',userRouter)
-
-const port=process.env.PORT
-
-app.listen(port,()=>{
-    console.log(`Server running on port ${port}`)
-})
+const PORT = process.env.PORT || 1000;
+app.listen(PORT, () => console.log("Server running"));
