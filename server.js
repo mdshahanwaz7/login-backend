@@ -1,6 +1,6 @@
 import express from "express";
 import cors from "cors";
-import bodyParser from 'express'
+// import bodyParser from 'express'
 import mongoose from "mongoose";
 // import dotenv from "dotenv";
 import {config} from "dotenv"
@@ -31,6 +31,7 @@ app.use(express.json());
 
 app.use("/api/user", userRouter);
 
+console.log("MONGO_URL:", process.env.MONGO_URL);
 
 mongoose.connect(process.env.MONGO_URL)
   .then(() => console.log("MongoDB connected"))

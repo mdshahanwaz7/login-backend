@@ -1,13 +1,17 @@
 import {User} from '../model/user.js'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 
 export const signup=async(req,res)=>{
-    const {name,email,password}=req.body
+    const {name,email}=req.body;
+    const password = String(req.body.password)
     if(name==""||email==""||password=="")
+
+      
+
         return res.json({message:"all field are required"})
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     
-
+console.log(req.body)
 if (!emailRegex.test(email)) {
   return res.status(400).json({ message: "Invalid email format" });
 }
@@ -23,6 +27,7 @@ if (!emailRegex.test(email)) {
     }
 
     let user= await User.findOne({email})
+    console.log(user)
     if(user)
         return res.json({message:"user already exist"})
     const hash=await bcrypt.hash(password,10)
