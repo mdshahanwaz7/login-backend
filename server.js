@@ -1,6 +1,6 @@
 import express  from "express"
 // import dotenv from 'dotenv'
-import jwt from 'jsonwebtoken'
+// import jwt from 'jsonwebtoken'
 import { config } from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors"
