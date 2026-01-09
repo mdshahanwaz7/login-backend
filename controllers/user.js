@@ -33,7 +33,7 @@ if (!emailRegex.test(email)) {
     const hash=await bcrypt.hash(password,10)
     user=await User.create({name,email,password:hash})
     console.log(user)
-    res.json({message:"user created succesfully"},user)
+    res.json({message:"user created succesfully",user})
 
 }
 
