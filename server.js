@@ -21,9 +21,11 @@ app.use(
 
 app.use(express.json());
 
+app.use("/api/user", userRouter);
+
 await mongoose.connect(process.env.MONGO_URL);
 
-app.use("/api/user", userRouter);
+
 
 const PORT = process.env.PORT || 1000;
 app.listen(PORT, () => console.log("Server running"));
