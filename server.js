@@ -8,7 +8,17 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",           
+      "https://vercel.com/md-shahanwazs-projects/login-assignment" 
+    ],
+    methods: ["GET", "POST"],
+    credentials: true,
+  })
+);
+
 app.use(express.json());
 
 await mongoose.connect(process.env.MONGO_URL);
